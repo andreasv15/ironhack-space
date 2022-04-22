@@ -8,30 +8,20 @@ NOTE: above link will be added later
 IronSpace is a game in which the Ironhack spaceship tries to shoot and destroy the different programming languages that appear in the space.
 
 # Main Functionalities
-
-- List here the main functionalities your game will have
-If the Ironship shoot the obstacle, add 5 points.
-If the Ironship shoot't attack the obstacle and the obstacle reaches the goal, lose 10 points.
-If the score is less than 0 points, the game ends.
-If the obstacle collides with the Ironship, no points are deducted, but the game ends.
-Every 20 points scored, the speed of obstacle increases.
-The left and right keys are used to move the Ironship, and the space bar is used to shoot.
+- If the Ironship shoot the obstacle, add 5 points.
+- If the Ironship shoot't attack the obstacle and the obstacle reaches the goal, lose 10 points.
+- If the score is less than 0 points, the game ends.
+- If the obstacle collides with the Ironship, no points are deducted, but the game ends.
+- Every 20 points scored, the speed of obstacle increases.
+- The left and right keys are used to move the Ironship, and the space bar is used to shoot.
 
 
 
 # Backlog Functionalities
-
-- List here the cool (but not essential) functionalities your game could have
-Each programming languages has a different score.
+- Each programming languages has a different score.
 
 
 # Proyect Structure
-
-- List here the JS files you think you might need. 
-- One main.js to manage DOM elements, one for Game class and one for each other class.
-- Recommended: Inside each file you can list the functions, clases, properties and methods you will need.
-
-Example:
 
 ## main.js
 
@@ -73,9 +63,9 @@ Example:
 # States and Transitions
 
 - List here the different pages your game will have. For example: Start Screen, Game Screen, Win Screen, etc.
-Start Screen
-Game Screen
-GameOver Screen
+- Start Screen
+- Game Screen
+- GameOver Screen
 
 # Tasks (Optional)
 
