@@ -1,0 +1,91 @@
+# IRONSPACE
+
+
+## [See the Game]()
+NOTE: above link will be added later
+
+# Description
+IronSpace is a game in which the Ironhack spaceship tries to shoot and destroy the different programming languages that appear in the space.
+
+# Main Functionalities
+
+- List here the main functionalities your game will have
+If the Ironship shoot the obstacle, add 5 points.
+If the Ironship shoot't attack the obstacle and the obstacle reaches the goal, lose 10 points.
+If the score is less than 0 points, the game ends.
+If the obstacle collides with the Ironship, no points are deducted, but the game ends.
+Every 20 points scored, the speed of obstacle increases.
+The left and right keys are used to move the Ironship, and the space bar is used to shoot.
+
+
+
+# Backlog Functionalities
+
+- List here the cool (but not essential) functionalities your game could have
+Each programming languages has a different score.
+
+
+# Proyect Structure
+
+- List here the JS files you think you might need. 
+- One main.js to manage DOM elements, one for Game class and one for each other class.
+- Recommended: Inside each file you can list the functions, clases, properties and methods you will need.
+
+Example:
+
+## main.js
+
+- startGame()
+
+## game.js
+
+- Game () {
+    this.player;
+    this.obstacles = [];
+}
+- gameLoop () {}
+- checkCollisions () {}
+
+## ironship.js 
+- Ironship () {
+    this.x;
+    this.y;
+    this.w;
+    this.h;
+    this.logo;
+}
+- drawIronship () {}
+- moveIronship () {}
+- shoot() {}
+
+## obstacle.js 
+- Obstacle () {
+    this.x;
+    this.y;
+    this.w;
+    this.h;
+    this.logo;
+}
+- drawObstacle () {}
+- moveObstacle () {}
+
+
+# States and Transitions
+
+- List here the different pages your game will have. For example: Start Screen, Game Screen, Win Screen, etc.
+Start Screen
+Game Screen
+GameOver Screen
+
+# Tasks (Optional)
+
+- List of individual Tasks you will need to finish the game from zero to an amazing game!
+- Note: If using Trello or github proyect to keep track of tasks, then you can remove this section.
+
+# Extra Links (The links can be added later when available)
+
+### Trello
+[Link url](https://trello.com/b/CWviY2zv/kraken-brigade-project)
+
+### Slides
+[Link Slides.com](https://docs.google.com/presentation/d/138o01hAz-0gXepN78RsDgse12HiiuN7Fz_N_hJnI9_g/edit?usp=sharing)
