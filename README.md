@@ -62,7 +62,6 @@ IronSpace is a game in which the Ironhack spaceship tries to shoot and destroy t
 
 # States and Transitions
 
-- List here the different pages your game will have. For example: Start Screen, Game Screen, Win Screen, etc.
 - Start Screen
 - Game Screen
 - GameOver Screen
