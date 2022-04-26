@@ -24,11 +24,4 @@ class Ironship {
         this.x = this.x + 10;
     }
 
-
-
-    shoot() {
-        
-    }
-    
-
 }

@@ -13,9 +13,10 @@ let game;
 let randomX = Math.floor(Math.random() * canvas.width);
 
 
+
 const startGame = () => {
     startScreen.style.display = "none";
-    //gameOverScreen.style.display = "none";
+    gameOverScreen.style.display = "none";
     canvas.style.display = "flex";
 
     game = new Game();
@@ -35,10 +36,14 @@ const keyPress = (event) => {
         game.irSpace.moveRightIronship();
         //console.log("der")
     } else if (event.code === "Space") {
-        //game.shoot.();
+        game.irShoot = new Shoot();
+        game.addNewObstacleShoot();
+        //console.log("pulsando espacio")
+        //game.irShoot.drawShoot();
+        
+        //console.log(game.irShoot.drawShoot());
     }
 }
-
 
 
 startBtnDOM.addEventListener("click", startGame);
