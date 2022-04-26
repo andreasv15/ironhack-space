@@ -9,42 +9,45 @@
 </head>
 <body>
 
-    <div class="container">
-        <span> Score: 0 </span>
-        <span> Tiem: 0 </span>
+  <div class="container">
+    <div id="time-points">
+      Score:<span id="scoreSpan"> 0 </span>
+      Tiempo:<span id="timeSpan"> 0 </span>
+    </div>
+
         <!-- START SCREEN -->
         <div id="splash-screen" class="container">
           <img src="./images/IRONSPACE-GAME-removebg.png" width="500" alt="logo">
-          <button id="start-btn">Start!</button>
+          <button id="start-btn"> START!</button>
         </div>
         
+
         <!-- GAME SCREEN -->
         <canvas id="my-canvas" width="450" height="630"></canvas>
         
         
         <!-- GAME OVER SCREEN -->
-        
         <div id="gameover-screen" class="container">
-          <img src="./images/gameover.jpg" width="500" alt="logo">
-          <button id="restart-btn">Play Again!</button>
+          <img src="./images/gameover.png" width="500" alt="logo">
+          <button id="restart-btn">PLAY AGAIN!</button>
         </div>
-        
-        
-  
       </div>
   
 
     <script src="./js/main.js"></script>
     <script src="./js/game.js"></script>
     <script src="./js/ironship.js"></script>
-    <script src="./js/obstacleCSS.js"></script>
-    <script src="./js/obstacleHTML.js"></script>
-    <script src="./js/obstacleJS.js"></script>
-    <script src="./js/obstacleMDB.js"></script>
-    <script src="./js/obstacleNODE.js"></script>
-    <script src="./js/obstacleREACT.js"></script>
-    <script src="./js/obstacleVUE.js"></script>
+    <!--
+      <script src="./js/obstacleCSS.js"></script>
+      <script src="./js/obstacleHTML.js"></script>
+      <script src="./js/obstacleJS.js"></script>
+      <script src="./js/obstacleMDB.js"></script>
+      <script src="./js/obstacleNODE.js"></script>
+      <script src="./js/obstacleREACT.js"></script>
+      <script src="./js/obstacleVUE.js"></script>
+    -->
     <script src="./js/obstacleShoot.js"></script>
+    <script src="./js/obstacle.js"></script>
     
 </body>
 </html>

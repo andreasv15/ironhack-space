@@ -7,6 +7,12 @@ const startScreen = document.querySelector("#splash-screen");
 const gameOverScreen = document.querySelector("#gameover-screen");
 
 const canvas = document.querySelector("#my-canvas");
+
+const timePoints = document.querySelector("#time-points");
+
+const timeSpan = document.querySelector("#timeSpan");
+const pointsSpan = document.querySelector("#scoreSpan");
+
 const ctx = canvas.getContext("2d");
 
 let game;
@@ -18,7 +24,7 @@ const startGame = () => {
     startScreen.style.display = "none";
     gameOverScreen.style.display = "none";
     canvas.style.display = "flex";
-
+    timePoints.style.display = "flex";
     game = new Game();
 
     game.gameLoop();
@@ -47,5 +53,5 @@ const keyPress = (event) => {
 
 
 startBtnDOM.addEventListener("click", startGame);
-//restartBtnDOM.addEventListener("click", startGame);
+restartBtnDOM.addEventListener("click", startGame);
 window.addEventListener("keydown", keyPress);

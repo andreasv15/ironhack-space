@@ -1,30 +1,79 @@
 body {
     margin: 0;
     background-color: lightgray;
-  }
+}
+
+#my-canvas {
+  background-image: url("../images/background.jpg");
+  background-size: cover;
+}
   
-  #my-canvas {
-    background-image: url("../images/background.jpg");
-    background-size: cover;
-  }
+/*
+#start-btn, #restart-btn {
+  background-color: green;
+  color: white;
+  padding: 20px;
+  font-size: 20px;
+  margin-top: 40px;
+  border-radius: 10px; 
+}
+*/
+
+#start-btn, #restart-btn {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #3B3B3B;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin-top: 20px;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 50%;
+  will-change: transform;
+}
+
+#start-btn:disabled, #restart-btn:disabled {
+  pointer-events: none;
+}
   
-  #start-btn, #restart-btn {
-    background-color: green;
-    color: white;
-    padding: 20px;
-    font-size: 20px;
-    margin-top: 40px;
-    border-radius: 10px; 
-  }
+#start-btn:hover, #restart-btn:hover {
+  color: #fff;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
   
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 50px;
-  }
+#start-btn:active, #restart-btn:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
   
-  #my-canvas, #gameover-screen {
-    display: none;
-  }
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+}
+
+#my-canvas, #gameover-screen, #time-points {
+  display: none;
+}
+
+
+  

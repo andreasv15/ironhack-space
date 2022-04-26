@@ -8,7 +8,7 @@ class Game {
         this.obsHTML = new obstacleHTML();
         this.obsJS = new obstacleJS();
         this.obsMDB = new obstacleMDB();
-        this.obsNODE = new obstacleNODE();
+        //this.obsNODE = new obstacleNODE();
         this.obsREACT = new obstacleREACT();
         this.obsVUE = new obstacleVUE();
         
@@ -19,13 +19,14 @@ class Game {
         this.obstacleArrHTML = [ ];
         this.obstacleArrJS = [ ];
         this.obstacleArrMDB = [ ];
-        this.obstacleArrNODE = [ ];
+        //this.obstacleArrNODE = [ ];
         this.obstacleArrREACT = [ ];
         this.obstacleArrVUE = [ ];
         this.shootsArr = [ ];
 
         this.isGameOn = true;
         this.score = 0;
+        this.seconds
     }
 
     
@@ -66,6 +67,7 @@ class Game {
         }
     }
 
+    /*
     addNewObstacleNODE = () => {
         if ( this.obstacleArrNODE.length === 0 || this.obstacleArrNODE[this.obstacleArrNODE.length -1].y > 120) {
             randomX = Math.random() * (canvas.width - this.obsNODE.w);
@@ -73,6 +75,7 @@ class Game {
             this.obstacleArrNODE.push(newObsNODE);
         }
     }
+    */
 
     addNewObstacleREACT = () => {
         if ( this.obstacleArrREACT.length === 0 || this.obstacleArrREACT[this.obstacleArrREACT.length -1].y > 210) {
@@ -92,25 +95,16 @@ class Game {
 
     Collision = () => {
 
-        // de cada pipe, checkear si colisiona con el pollo
-
         this.obstacleArrCSS.forEach( (eachObsCSS, indexCSS) => {
             if (this.irSpace.x < eachObsCSS.x + eachObsCSS.w &&
                 this.irSpace.x + this.irSpace.w > eachObsCSS.x &&
                 this.irSpace.y < eachObsCSS.y + eachObsCSS.h &&
                 this.irSpace.h + this.irSpace.y > eachObsCSS.y) {
                 // collision detected!
-                //console.log("colisiona VUE con iron");
-                //finaliza el juego
 
-                // 1. el juego se detiene
+                // el juego se detiene
                 this.isGameOn = false;
 
-                // 2. el canvas desaparece
-                canvas.style.display = "none";
-
-                // 3. la pantalla final aparece
-                gameOverScreen.style.display = "flex";
 
             }
             this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
@@ -122,8 +116,10 @@ class Game {
                         this.score += 5;
                         //this.shootsArr.splice(indexShoot, 1);
                         this.obstacleArrCSS.splice(indexCSS, 1);
-
-                    }
+                        this.shootsArr.splice(indexShoot, 1);
+                        pointsSpan.innerText = parseInt(this.score); 
+                }   
+                
             })
         })
 
@@ -136,14 +132,8 @@ class Game {
                 //console.log("colisiona VUE con iron");
                 //finaliza el juego
 
-                // 1. el juego se detiene
+                // el juego se detiene
                 this.isGameOn = false;
-
-                // 2. el canvas desaparece
-                canvas.style.display = "none";
-
-                // 3. la pantalla final aparece
-                gameOverScreen.style.display = "flex";
             } 
             this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
                 if (eachObsShoot.x < eachObsHTML.x + eachObsHTML.w &&
@@ -153,6 +143,8 @@ class Game {
                         // 1. va sumando puntos al score
                         this.score += 5;
                         this.obstacleArrHTML.splice(indexHTML, 1);
+                        this.shootsArr.splice(indexShoot, 1);
+                        pointsSpan.innerText = parseInt(this.score); 
 
                 }
             })
@@ -167,14 +159,8 @@ class Game {
                 //console.log("colisiona VUE con iron");
                 //finaliza el juego
 
-                // 1. el juego se detiene
+                // el juego se detiene
                 this.isGameOn = false;
-
-                // 2. el canvas desaparece
-                canvas.style.display = "none";
-
-                // 3. la pantalla final aparece
-                gameOverScreen.style.display = "flex";
             }
             this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
                 if (eachObsShoot.x < eachObsJS.x + eachObsJS.w &&
@@ -184,6 +170,8 @@ class Game {
                         // 1. va sumando puntos al score
                         this.score += 5;
                         this.obstacleArrJS.splice(indexJS, 1);
+                        this.shootsArr.splice(indexShoot, 1);
+                        pointsSpan.innerText = parseInt(this.score); 
 
                 }
             })
@@ -198,14 +186,8 @@ class Game {
                 //console.log("colisiona VUE con iron");
                 //finaliza el juego
 
-                // 1. el juego se detiene
+                // el juego se detiene
                 this.isGameOn = false;
-
-                // 2. el canvas desaparece
-                canvas.style.display = "none";
-
-                // 3. la pantalla final aparece
-                gameOverScreen.style.display = "flex";
             } 
             this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
                 if (eachObsShoot.x < eachObsMDB.x + eachObsMDB.w &&
@@ -215,11 +197,14 @@ class Game {
                         // 1. va sumando puntos al score
                         this.score += 5;
                         this.obstacleArrMDB.splice(indexMDB, 1);
+                        this.shootsArr.splice(indexShoot, 1);
+                        pointsSpan.innerText = parseInt(this.score); 
 
                     }
             })
         })
 
+        /*
         this.obstacleArrNODE.forEach( (eachObsNODE, indexNODE) => {
             if (this.irSpace.x < eachObsNODE.x + eachObsNODE.w &&
                 this.irSpace.x + this.irSpace.w > eachObsNODE.x &&
@@ -229,14 +214,8 @@ class Game {
                 //console.log("colisiona VUE con iron");
                 //finaliza el juego
 
-                // 1. el juego se detiene
+                // el juego se detiene
                 this.isGameOn = false;
-
-                // 2. el canvas desaparece
-                canvas.style.display = "none";
-
-                // 3. la pantalla final aparece
-                gameOverScreen.style.display = "flex";
             }
             this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
                 if (eachObsShoot.x < eachObsNODE.x + eachObsNODE.w &&
@@ -246,11 +225,12 @@ class Game {
                         // 1. va sumando puntos al score
                         this.score += 5;
                         this.obstacleArrNODE.splice(indexNODE, 1);
+                        this.shootsArr.splice(indexShoot, 1);
 
                 }
             })
         })
-
+        */
         this.obstacleArrREACT.forEach( (eachObsREACT, indexREACT) => {
             if (this.irSpace.x < eachObsREACT.x + eachObsREACT.w &&
                 this.irSpace.x + this.irSpace.w > eachObsREACT.x &&
@@ -260,14 +240,8 @@ class Game {
                 //console.log("colisiona VUE con iron");
                 //finaliza el juego
 
-                // 1. el juego se detiene
+                // el juego se detiene
                 this.isGameOn = false;
-
-                // 2. el canvas desaparece
-                canvas.style.display = "none";
-
-                // 3. la pantalla final aparece
-                gameOverScreen.style.display = "flex";
             } 
             this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
                 if (eachObsShoot.x < eachObsREACT.x + eachObsREACT.w &&
@@ -277,7 +251,9 @@ class Game {
                         // 1. va sumando puntos al score
                         this.score += 5;
                         this.obstacleArrREACT.splice(indexREACT, 1);
-
+                        this.shootsArr.splice(indexShoot, 1);
+                        //console.log(this.score);
+                        pointsSpan.innerText = parseInt(this.score); 
                 }
             })
         })
@@ -291,14 +267,8 @@ class Game {
                 //console.log("colisiona VUE con iron");
                 //finaliza el juego
 
-                // 1. el juego se detiene
+                // el juego se detiene
                 this.isGameOn = false;
-
-                // 2. el canvas desaparece
-                canvas.style.display = "none";
-
-                // 3. la pantalla final aparece
-                gameOverScreen.style.display = "flex";
             }
             this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
                 if (eachObsShoot.x < eachObsVUE.x + eachObsVUE.w &&
@@ -309,7 +279,8 @@ class Game {
                         // 1. va sumando puntos al score
                         this.score += 5;
                         this.obstacleArrVUE.splice(indexVUE, 1);
-
+                        this.shootsArr.splice(indexShoot, 1);
+                        pointsSpan.innerText = parseInt(this.score); 
                 }
             })
         })
@@ -340,10 +311,12 @@ class Game {
             eachObsMDB.moveObstacleMDB();
         });
 
+        /*
         this.obstacleArrNODE.forEach((eachObsNODE) => {
             eachObsNODE.moveObstacleNODE();
         });
-
+        */
+        
         this.obstacleArrREACT.forEach((eachObsREACT) => {
             eachObsREACT.moveObstacleREACT();
         });
@@ -359,7 +332,7 @@ class Game {
         this.addNewObstacleJS();
         this.addNewObstacleMDB();
         this.addNewObstacleHTML();
-        this.addNewObstacleNODE();
+        //this.addNewObstacleNODE();
         this.addNewObstacleCSS();
         this.addNewObstacleREACT();
         this.addNewObstacleVUE();
@@ -394,9 +367,11 @@ class Game {
             eachObsMDB.drawObstacleMDB();
         });
 
+        /*
         this.obstacleArrNODE.forEach((eachObsNODE) => {
             eachObsNODE.drawObstacleNODE();
         });
+        */
 
         this.obstacleArrREACT.forEach((eachObsREACT) => {
             eachObsREACT.drawObstacleREACT();
@@ -426,7 +401,15 @@ class Game {
 
         // 4. control y recursividad
         if (this.isGameOn) {
-            requestAnimationFrame(this.gameLoop);
+            requestAnimationFrame(this.gameLoop);    
+        } else {
+            // 2. el canvas desaparece
+            canvas.style.display = "none";
+
+            // 3. la pantalla final aparece
+            gameOverScreen.style.display = "flex";
+            
+            
         }
 
 
