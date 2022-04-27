@@ -26,6 +26,7 @@ let score = 0;
 
 
 const startGame = () => {
+    score = 0;
     startScreen.style.display = "none";
     gameOverScreen.style.display = "none";
     canvas.style.display = "flex";
@@ -33,7 +34,7 @@ const startGame = () => {
     timePointsGO.style.display = "flex";
     timePoints.style.justifyContent = "space-around";
     timePointsGO.style.justifyContent = "space-around";
-    pointsSpan.innerText = 0;
+    pointsSpan.innerText = score;
     game = new Game();
 
     game.gameLoop();
