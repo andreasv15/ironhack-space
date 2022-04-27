@@ -65,7 +65,7 @@ class obstacleREACT {
     constructor(xParam, yParam) {
         this.x = xParam;
         this.y = yParam;
-        this.w = 50;
+        this.w = 60;
         this.h = 55;
         this.speed = 1;
         this.logo = new Image();

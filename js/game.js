@@ -2,7 +2,7 @@ class Game {
 
     constructor() {
         this.irSpace = new Ironship();
-        this.irShoot;
+        //this.irShoot;
 
         this.obsCSS = new obstacleCSS();
         this.obsHTML = new obstacleHTML();
@@ -23,13 +23,22 @@ class Game {
         this.obstacleArrREACT = [ ];
         this.obstacleArrVUE = [ ];
         this.shootsArr = [ ];
-
+        this.speed = 1;
         this.isGameOn = true;
-        this.score = 0;
-        this.seconds
+        this.seconds = 0;
+        this.incSeconds = setInterval(this.incrementsSeconds, 1000);
     }
 
-    
+    incrementsSeconds = () => {
+        this.seconds++;
+        timeSpan.innerText = parseInt(this.seconds);
+        timeSpanGO.innerText = parseInt(this.seconds);
+    }
+
+    stopSeconds = () => {
+        clearInterval(this.incSeconds);
+    }
+
     addNewObstacleShoot = () => {
         let newObsShoot = new Shoot();
         this.shootsArr.push(newObsShoot);            
@@ -38,7 +47,8 @@ class Game {
     addNewObstacleCSS = () => {
         if ( this.obstacleArrCSS.length === 0 || this.obstacleArrCSS[this.obstacleArrCSS.length -1].y > 200) {
             randomX = Math.random() * (canvas.width - this.obsCSS.w);
-            let newObsCSS = new obstacleCSS(randomX, -200);
+            this.speed+=0.5;
+            let newObsCSS = new obstacleCSS(randomX, -200, this.speed);
             this.obstacleArrCSS.push(newObsCSS);
         }
     }
@@ -46,7 +56,8 @@ class Game {
     addNewObstacleHTML = () => {
         if ( this.obstacleArrHTML.length === 0 || this.obstacleArrHTML[this.obstacleArrHTML.length -1].y > 150) {
             randomX = Math.random() * (canvas.width - this.obsHTML.w);
-            let newObsHTML = new obstacleHTML(randomX, -50);
+            this.speed+=0.5;
+            let newObsHTML = new obstacleHTML(randomX, -50, this.speed);
             this.obstacleArrHTML.push(newObsHTML);
         }
     }
@@ -67,15 +78,6 @@ class Game {
         }
     }
 
-    /*
-    addNewObstacleNODE = () => {
-        if ( this.obstacleArrNODE.length === 0 || this.obstacleArrNODE[this.obstacleArrNODE.length -1].y > 120) {
-            randomX = Math.random() * (canvas.width - this.obsNODE.w);
-            let newObsNODE = new obstacleNODE(randomX, -50);
-            this.obstacleArrNODE.push(newObsNODE);
-        }
-    }
-    */
 
     addNewObstacleREACT = () => {
         if ( this.obstacleArrREACT.length === 0 || this.obstacleArrREACT[this.obstacleArrREACT.length -1].y > 210) {
@@ -101,11 +103,19 @@ class Game {
                 this.irSpace.y < eachObsCSS.y + eachObsCSS.h &&
                 this.irSpace.h + this.irSpace.y > eachObsCSS.y) {
                 // collision detected!
-
                 // el juego se detiene
                 this.isGameOn = false;
-
-
+                
+            } else if (eachObsCSS.y > canvas.height) {
+                // colision obstacles con canvas height
+                // 1. va restando puntos al score y borrando los elementos colisionados
+                score -= 10;
+                this.obstacleArrCSS.splice(indexCSS, 1);
+                pointsSpan.innerText = parseInt(score);
+                if (score < 0) {
+                    this.isGameOn = false;
+                    pointsSpanGO.style.color = "red";
+                }
             }
             this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
                 if (eachObsShoot.x < eachObsCSS.x + eachObsCSS.w &&
@@ -113,13 +123,13 @@ class Game {
                     eachObsShoot.y < eachObsCSS.y + eachObsCSS.h &&
                     eachObsShoot.h + eachObsShoot.y > eachObsCSS.y) {
                         // 1. va sumando puntos al score y borrando los elementos colisionados
-                        this.score += 5;
-                        //this.shootsArr.splice(indexShoot, 1);
+                        score += 5;
+                        
                         this.obstacleArrCSS.splice(indexCSS, 1);
                         this.shootsArr.splice(indexShoot, 1);
-                        pointsSpan.innerText = parseInt(this.score); 
-                }   
-                
+                        console.log(this.shootsArr.length, indexShoot)
+                        pointsSpan.innerText = parseInt(score); 
+                }
             })
         })
 
@@ -134,17 +144,29 @@ class Game {
 
                 // el juego se detiene
                 this.isGameOn = false;
-            } 
+            } else if (eachObsHTML.y > canvas.height) {
+                // colision obstacles con canvas height
+                // 1. va restando puntos al score y borrando los elementos colisionados
+                score -= 10;
+                //this.shootsArr.splice(indexShoot, 1);
+                this.obstacleArrHTML.splice(indexHTML, 1);
+                pointsSpan.innerText = parseInt(score);
+                if (score < 0) {
+                    this.isGameOn = false;
+                    pointsSpanGO.style.color = "red";
+                }
+
+            }
             this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
                 if (eachObsShoot.x < eachObsHTML.x + eachObsHTML.w &&
                     eachObsShoot.x + eachObsShoot.w > eachObsHTML.x &&
                     eachObsShoot.y < eachObsHTML.y + eachObsHTML.h &&
                     eachObsShoot.h + eachObsShoot.y > eachObsHTML.y) {
                         // 1. va sumando puntos al score
-                        this.score += 5;
+                        score += 5;
                         this.obstacleArrHTML.splice(indexHTML, 1);
                         this.shootsArr.splice(indexShoot, 1);
-                        pointsSpan.innerText = parseInt(this.score); 
+                        pointsSpan.innerText = parseInt(score); 
 
                 }
             })
@@ -161,6 +183,17 @@ class Game {
 
                 // el juego se detiene
                 this.isGameOn = false;
+            } else if (eachObsJS.y > canvas.height) {
+                // colision obstacles con canvas height
+                // 1. va restando puntos al score y borrando los elementos colisionados
+                score -= 10;
+                //this.shootsArr.splice(indexShoot, 1);
+                this.obstacleArrJS.splice(indexJS, 1);
+                pointsSpan.innerText = parseInt(score);
+                if (score < 0) {
+                    this.isGameOn = false;
+                    pointsSpanGO.style.color = "red";
+                }
             }
             this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
                 if (eachObsShoot.x < eachObsJS.x + eachObsJS.w &&
@@ -168,11 +201,10 @@ class Game {
                     eachObsShoot.y < eachObsJS.y + eachObsJS.h &&
                     eachObsShoot.h + eachObsShoot.y > eachObsJS.y) {
                         // 1. va sumando puntos al score
-                        this.score += 5;
+                        score += 5;
                         this.obstacleArrJS.splice(indexJS, 1);
                         this.shootsArr.splice(indexShoot, 1);
-                        pointsSpan.innerText = parseInt(this.score); 
-
+                        pointsSpan.innerText = parseInt(score);
                 }
             })
         })
@@ -188,49 +220,33 @@ class Game {
 
                 // el juego se detiene
                 this.isGameOn = false;
-            } 
+            } else if (eachObsMDB.y > canvas.height) {
+                // colision obstacles con canvas height
+                // 1. va restando puntos al score y borrando los elementos colisionados
+                score -= 10;
+                //this.shootsArr.splice(indexShoot, 1);
+                this.obstacleArrMDB.splice(indexMDB, 1);
+                pointsSpan.innerText = parseInt(score);
+                if (score < 0) {
+                    this.isGameOn = false;
+                    pointsSpanGO.style.color = "red";
+                }
+            }
             this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
                 if (eachObsShoot.x < eachObsMDB.x + eachObsMDB.w &&
                     eachObsShoot.x + eachObsShoot.w > eachObsMDB.x &&
                     eachObsShoot.y < eachObsMDB.y + eachObsMDB.h &&
                     eachObsShoot.h + eachObsShoot.y > eachObsMDB.y) {
                         // 1. va sumando puntos al score
-                        this.score += 5;
+                        score += 5;
                         this.obstacleArrMDB.splice(indexMDB, 1);
                         this.shootsArr.splice(indexShoot, 1);
-                        pointsSpan.innerText = parseInt(this.score); 
+                        pointsSpan.innerText = parseInt(score); 
 
                     }
             })
         })
 
-        /*
-        this.obstacleArrNODE.forEach( (eachObsNODE, indexNODE) => {
-            if (this.irSpace.x < eachObsNODE.x + eachObsNODE.w &&
-                this.irSpace.x + this.irSpace.w > eachObsNODE.x &&
-                this.irSpace.y < eachObsNODE.y + eachObsNODE.h &&
-                this.irSpace.h + this.irSpace.y > eachObsNODE.y) {
-                // collision detected!
-                //console.log("colisiona VUE con iron");
-                //finaliza el juego
-
-                // el juego se detiene
-                this.isGameOn = false;
-            }
-            this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
-                if (eachObsShoot.x < eachObsNODE.x + eachObsNODE.w &&
-                    eachObsShoot.x + eachObsShoot.w > eachObsNODE.x &&
-                    eachObsShoot.y < eachObsNODE.y + eachObsNODE.h &&
-                    eachObsShoot.h + eachObsShoot.y > eachObsNODE.y) {
-                        // 1. va sumando puntos al score
-                        this.score += 5;
-                        this.obstacleArrNODE.splice(indexNODE, 1);
-                        this.shootsArr.splice(indexShoot, 1);
-
-                }
-            })
-        })
-        */
         this.obstacleArrREACT.forEach( (eachObsREACT, indexREACT) => {
             if (this.irSpace.x < eachObsREACT.x + eachObsREACT.w &&
                 this.irSpace.x + this.irSpace.w > eachObsREACT.x &&
@@ -242,18 +258,29 @@ class Game {
 
                 // el juego se detiene
                 this.isGameOn = false;
-            } 
+            } else if (eachObsREACT.y > canvas.height) {
+                // colision obstacles con canvas height
+                // 1. va restando puntos al score y borrando los elementos colisionados
+                score -= 10;
+                //this.shootsArr.splice(indexShoot, 1);
+                this.obstacleArrREACT.splice(indexREACT, 1);
+                pointsSpan.innerText = parseInt(score);
+                if (score < 0) {
+                    this.isGameOn = false;
+                    pointsSpanGO.style.color = "red";
+                }
+            }
             this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
                 if (eachObsShoot.x < eachObsREACT.x + eachObsREACT.w &&
                     eachObsShoot.x + eachObsShoot.w > eachObsREACT.x &&
                     eachObsShoot.y < eachObsREACT.y + eachObsREACT.h &&
                     eachObsShoot.h + eachObsShoot.y > eachObsREACT.y) {
                         // 1. va sumando puntos al score
-                        this.score += 5;
+                        score += 5;
                         this.obstacleArrREACT.splice(indexREACT, 1);
                         this.shootsArr.splice(indexShoot, 1);
                         //console.log(this.score);
-                        pointsSpan.innerText = parseInt(this.score); 
+                        pointsSpan.innerText = parseInt(score); 
                 }
             })
         })
@@ -269,6 +296,17 @@ class Game {
 
                 // el juego se detiene
                 this.isGameOn = false;
+            } else if (eachObsVUE.y > canvas.height) {
+                // colision obstacles con canvas height
+                // 1. va restando puntos al score y borrando los elementos colisionados
+                score -= 10;
+                //this.shootsArr.splice(indexShoot, 1);
+                this.obstacleArrVUE.splice(indexVUE, 1);
+                pointsSpan.innerText = parseInt(score);
+                if (score < 0) {
+                    this.isGameOn = false;
+                    pointsSpanGO.style.color = "red";
+                }
             }
             this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
                 if (eachObsShoot.x < eachObsVUE.x + eachObsVUE.w &&
@@ -277,10 +315,10 @@ class Game {
                     eachObsShoot.h + eachObsShoot.y > eachObsVUE.y) {
                         //console.log("colision shoot con vue")
                         // 1. va sumando puntos al score
-                        this.score += 5;
+                        score += 5;
                         this.obstacleArrVUE.splice(indexVUE, 1);
                         this.shootsArr.splice(indexShoot, 1);
-                        pointsSpan.innerText = parseInt(this.score); 
+                        pointsSpan.innerText = parseInt(score); 
                 }
             })
         })
@@ -311,12 +349,6 @@ class Game {
             eachObsMDB.moveObstacleMDB();
         });
 
-        /*
-        this.obstacleArrNODE.forEach((eachObsNODE) => {
-            eachObsNODE.moveObstacleNODE();
-        });
-        */
-        
         this.obstacleArrREACT.forEach((eachObsREACT) => {
             eachObsREACT.moveObstacleREACT();
         });
@@ -329,26 +361,21 @@ class Game {
             eachObsShoot.moveObstacleShoot();
         });
 
+
         this.addNewObstacleJS();
         this.addNewObstacleMDB();
         this.addNewObstacleHTML();
-        //this.addNewObstacleNODE();
         this.addNewObstacleCSS();
         this.addNewObstacleREACT();
         this.addNewObstacleVUE();
 
-        if (this.irShoot) {
-            this.irShoot.drawShoot();
-            this.irShoot.moveObstacleShoot();
-        }
-
+        
         // checkear si el lenguaje choca con el ironship
         this.Collision();
 
         
         // 3. dibujar los elementos
         this.irSpace.drawIronship();
-
 
         
         this.obstacleArrCSS.forEach((eachObsCSS) => {
@@ -367,11 +394,6 @@ class Game {
             eachObsMDB.drawObstacleMDB();
         });
 
-        /*
-        this.obstacleArrNODE.forEach((eachObsNODE) => {
-            eachObsNODE.drawObstacleNODE();
-        });
-        */
 
         this.obstacleArrREACT.forEach((eachObsREACT) => {
             eachObsREACT.drawObstacleREACT();
@@ -382,33 +404,24 @@ class Game {
         });
 
         this.shootsArr.forEach((eachObsShoot) => {
+            //console.log("¨dibujando")
             eachObsShoot.drawShoot();
         });
 
         
 
 
-        /*
-        this.obsCSS.drawObstacleCSS();
-        this.obsHTML.drawObstacleHTML();
-        this.obsJS.drawObstacleJS();
-        this.obsMDB.drawObstacleMDB();
-        this.obsNODE.drawObstacleNODE();
-        this.obsREACT.drawObstacleREACT();
-        this.obsVUE.drawObstacleVUE();
-        */
-
-
         // 4. control y recursividad
         if (this.isGameOn) {
             requestAnimationFrame(this.gameLoop);    
         } else {
+            this.stopSeconds();
+            pointsSpanGO.innerText = parseInt(score); 
             // 2. el canvas desaparece
             canvas.style.display = "none";
-
+            timePoints.style.display = "none";
             // 3. la pantalla final aparece
             gameOverScreen.style.display = "flex";
-            
             
         }
 

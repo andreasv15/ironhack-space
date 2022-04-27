@@ -62,7 +62,7 @@ body {
   box-shadow: none;
   transform: translateY(0);
 }
-  
+
 .container {
   display: flex;
   flex-direction: column;
@@ -75,5 +75,8 @@ body {
   display: none;
 }
 
-
+#time-points, #timePointsGameOver {
+  width: 53.5%;
+  font-family: Arial, Helvetica, sans-serif;
+}
   
