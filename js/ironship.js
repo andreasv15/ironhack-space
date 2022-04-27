@@ -6,7 +6,7 @@ class Ironship {
         this.w = 50;
         this.h = 55;
         this.logo = new Image();
-        this.logo.src = "../images/ironhack2-sinFondo.png";
+        this.logo.src = "./images/ironhack2-sinFondo.png";
     }
 
     // metodos

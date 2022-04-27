@@ -6,7 +6,7 @@ class obstacleCSS {
         this.h = 55;
         this.speed = 1;
         this.logo = new Image();
-        this.logo.src = "../images/css-sinFondo.png";
+        this.logo.src = "./images/css-sinFondo.png";
     }
 
     drawObstacleCSS() {
@@ -27,7 +27,7 @@ class obstacleJS {
         this.h = 55;
         this.speed = 1;
         this.logo = new Image();
-        this.logo.src = "../images/js-sinFondo.png";
+        this.logo.src = "./images/js-sinFondo.png";
     }
 
     drawObstacleJS() {
@@ -48,7 +48,7 @@ class obstacleMDB {
         this.h = 55;
         this.speed = 1;
         this.logo = new Image();
-        this.logo.src = "../images/mongodb-sinFondo.png";
+        this.logo.src = "./images/mongodb-sinFondo.png";
     }
 
     drawObstacleMDB() {
@@ -69,7 +69,7 @@ class obstacleREACT {
         this.h = 55;
         this.speed = 1;
         this.logo = new Image();
-        this.logo.src = "../images/react-sinFondo.png";
+        this.logo.src = "./images/react-sinFondo.png";
     }
 
     drawObstacleREACT() {
@@ -90,7 +90,7 @@ class obstacleVUE {
         this.h = 55;
         this.speed = 1;
         this.logo = new Image();
-        this.logo.src = "../images/vue-sinFondo.png";
+        this.logo.src = "./images/vue-sinFondo.png";
     }
 
     drawObstacleVUE() {
@@ -111,7 +111,7 @@ class obstacleHTML {
         this.h = 55;
         this.speed = 1;
         this.logo = new Image();
-        this.logo.src = "../images/html-sinFondo.png";
+        this.logo.src = "./images/html-sinFondo.png";
     }
 
     drawObstacleHTML() {
