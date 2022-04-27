@@ -47,7 +47,15 @@ class Game {
     addNewObstacleCSS = () => {
         if ( this.obstacleArrCSS.length === 0 || this.obstacleArrCSS[this.obstacleArrCSS.length -1].y > 200) {
             randomX = Math.random() * (canvas.width - this.obsCSS.w);
-            this.speed+=0.5;
+            if (score > 30) {
+                this.speed += 0.1;
+            } else if  (score > 70) {
+                this.speed += 0.1;
+            } else if  (score > 140) {
+                this.speed += 0.1;
+            } else if (score > 190) {
+                this.speed += 0.1;
+            }
             let newObsCSS = new obstacleCSS(randomX, -200, this.speed);
             this.obstacleArrCSS.push(newObsCSS);
         }
@@ -56,7 +64,15 @@ class Game {
     addNewObstacleHTML = () => {
         if ( this.obstacleArrHTML.length === 0 || this.obstacleArrHTML[this.obstacleArrHTML.length -1].y > 150) {
             randomX = Math.random() * (canvas.width - this.obsHTML.w);
-            this.speed+=0.5;
+            if (score > 30) {
+                this.speed += 0.1;
+            } else if  (score > 70) {
+                this.speed += 0.1;
+            } else if  (score > 140) {
+                this.speed += 0.1;
+            } else if (score > 190) {
+                this.speed += 0.1;
+            }
             let newObsHTML = new obstacleHTML(randomX, -50, this.speed);
             this.obstacleArrHTML.push(newObsHTML);
         }
@@ -65,7 +81,16 @@ class Game {
     addNewObstacleJS = () => {
         if ( this.obstacleArrJS.length === 0 || this.obstacleArrJS[this.obstacleArrJS.length -1].y > 100) {
             randomX = Math.random() * (canvas.width - this.obsJS.w);
-            let newObsJS = new obstacleJS(randomX, -100);
+            if (score > 30) {
+                this.speed += 0.1;
+            } else if  (score > 70) {
+                this.speed += 0.1;
+            } else if  (score > 140) {
+                this.speed += 0.1;
+            } else if (score > 190) {
+                this.speed += 0.1;
+            }
+            let newObsJS = new obstacleJS(randomX, -100, this.speed);
             this.obstacleArrJS.push(newObsJS);
         }
     }
@@ -73,7 +98,16 @@ class Game {
     addNewObstacleMDB = () => {
         if ( this.obstacleArrMDB.length === 0 || this.obstacleArrMDB[this.obstacleArrMDB.length -1].y > 80) {
             randomX = Math.random() * (canvas.width - this.obsMDB.w);
-            let newObsMDB = new obstacleMDB(randomX, -20);
+            if (score > 30) {
+                this.speed += 0.1;
+            } else if  (score > 70) {
+                this.speed += 0.1;
+            } else if  (score > 140) {
+                this.speed += 0.1;
+            } else if (score > 190) {
+                this.speed += 0.1;
+            }
+            let newObsMDB = new obstacleMDB(randomX, -20, this.speed);
             this.obstacleArrMDB.push(newObsMDB);
         }
     }
@@ -82,7 +116,16 @@ class Game {
     addNewObstacleREACT = () => {
         if ( this.obstacleArrREACT.length === 0 || this.obstacleArrREACT[this.obstacleArrREACT.length -1].y > 210) {
             randomX = Math.random() * (canvas.width - this.obsREACT.w);
-            let newObsREACT = new obstacleREACT(randomX, -80);
+            if (score > 30) {
+                this.speed += 0.1;
+            } else if  (score > 70) {
+                this.speed += 0.1;
+            } else if  (score > 140) {
+                this.speed += 0.1;
+            } else if (score > 190) {
+                this.speed += 0.1;
+            }
+            let newObsREACT = new obstacleREACT(randomX, -80, this.speed);
             this.obstacleArrREACT.push(newObsREACT);
         }
     }
@@ -90,7 +133,16 @@ class Game {
     addNewObstacleVUE = () => {
         if ( this.obstacleArrVUE.length === 0 || this.obstacleArrVUE[this.obstacleArrVUE.length -1].y > 200) {
             randomX = Math.random() * (canvas.width - this.obsVUE.w);
-            let newObsVUE = new obstacleVUE(randomX, -100);
+            if (score > 30) {
+                this.speed += 0.1;
+            } else if  (score > 70) {
+                this.speed += 0.1;
+            } else if  (score > 140) {
+                this.speed += 0.1;
+            } else if (score > 190) {
+                this.speed += 0.1;
+            }
+            let newObsVUE = new obstacleVUE(randomX, -100, this.speed);
             this.obstacleArrVUE.push(newObsVUE);
         }
     }
@@ -127,7 +179,6 @@ class Game {
                         
                         this.obstacleArrCSS.splice(indexCSS, 1);
                         this.shootsArr.splice(indexShoot, 1);
-                        console.log(this.shootsArr.length, indexShoot)
                         pointsSpan.innerText = parseInt(score); 
                 }
             })
@@ -369,7 +420,7 @@ class Game {
         this.addNewObstacleREACT();
         this.addNewObstacleVUE();
 
-        
+
         // checkear si el lenguaje choca con el ironship
         this.Collision();
 

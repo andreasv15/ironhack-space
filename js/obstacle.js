@@ -1,10 +1,10 @@
 class obstacleCSS {
-    constructor(xParam, yParam) {
+    constructor(xParam, yParam, speedParam) {
         this.x = xParam;
         this.y = yParam;
         this.w = 50;
         this.h = 55;
-        this.speed = 1;
+        this.speed = speedParam;
         this.logo = new Image();
         this.logo.src = "./images/css-sinFondo.png";
     }
@@ -20,12 +20,12 @@ class obstacleCSS {
 }
 
 class obstacleJS {
-    constructor(xParam, yParam) {
+    constructor(xParam, yParam, speedParam) {
         this.x = xParam;
         this.y = yParam;
         this.w = 50;
         this.h = 55;
-        this.speed = 1;
+        this.speed = speedParam;
         this.logo = new Image();
         this.logo.src = "./images/js-sinFondo.png";
     }
@@ -41,12 +41,12 @@ class obstacleJS {
 }
 
 class obstacleMDB {
-    constructor(xParam, yParam) {
+    constructor(xParam, yParam, speedParam) {
         this.x = xParam;
         this.y = yParam;
         this.w = 50;
         this.h = 55;
-        this.speed = 1;
+        this.speed = speedParam;
         this.logo = new Image();
         this.logo.src = "./images/mongodb-sinFondo.png";
     }
@@ -62,12 +62,12 @@ class obstacleMDB {
 }
 
 class obstacleREACT {
-    constructor(xParam, yParam) {
+    constructor(xParam, yParam, speedParam) {
         this.x = xParam;
         this.y = yParam;
         this.w = 60;
         this.h = 55;
-        this.speed = 1;
+        this.speed = speedParam;
         this.logo = new Image();
         this.logo.src = "./images/react-sinFondo.png";
     }
@@ -83,12 +83,12 @@ class obstacleREACT {
 }
 
 class obstacleVUE {
-    constructor(xParam, yParam) {
+    constructor(xParam, yParam, speedParam) {
         this.x = xParam;
         this.y = yParam;
         this.w = 50;
         this.h = 55;
-        this.speed = 1;
+        this.speed = speedParam;
         this.logo = new Image();
         this.logo.src = "./images/vue-sinFondo.png";
     }
@@ -104,12 +104,12 @@ class obstacleVUE {
 }
 
 class obstacleHTML {
-    constructor(xParam, yParam) {
+    constructor(xParam, yParam, speedParam) {
         this.x = xParam;
         this.y = yParam;
         this.w = 50;
         this.h = 55;
-        this.speed = 1;
+        this.speed = speedParam;
         this.logo = new Image();
         this.logo.src = "./images/html-sinFondo.png";
     }

@@ -57,7 +57,7 @@ body {
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }
-  
+
 #start-btn:active, #restart-btn:active {
   box-shadow: none;
   transform: translateY(0);
@@ -76,7 +76,6 @@ body {
 }
 
 #time-points, #timePointsGameOver {
-  width: 53.5%;
+  width: 450px;
   font-family: Arial, Helvetica, sans-serif;
 }
-  
