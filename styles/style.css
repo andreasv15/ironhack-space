@@ -77,5 +77,6 @@ body {
 
 #time-points, #timePointsGameOver {
   width: 450px;
+  font-size: 2em;
   font-family: Arial, Helvetica, sans-serif;
 }

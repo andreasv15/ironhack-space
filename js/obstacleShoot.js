@@ -7,6 +7,8 @@ class Shoot {
         this.speed = 3;
         this.img = new Image();
         this.img.src = "./images/shoot-individual.png";
+        this.audio = new Audio();
+        this.audio.src = "./audio/audioShootCortado.mp3";
     }
 
     drawShoot() {
@@ -18,6 +20,10 @@ class Shoot {
     
     moveObstacleShoot() {
             this.y = this.y - this.speed;
+    }
+
+    playAudio() {
+        this.audio.play();
     }
     
 }

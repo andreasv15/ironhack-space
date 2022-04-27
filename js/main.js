@@ -53,11 +53,9 @@ const keyPress = (event) => {
         //console.log("der")
     } else if (event.code === "Space") {
         //game.irShoot = new Shoot();
-        game.addNewObstacleShoot();
-        //console.log("pulsando espacio")
-        //game.irShoot.drawShoot();
-        
-        //console.log(game.irShoot.drawShoot());
+        if (startGame) {
+            game.addNewObstacleShoot();
+        }
     }
 }
 

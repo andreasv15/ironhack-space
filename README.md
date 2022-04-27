@@ -12,7 +12,7 @@ IronSpace is a game in which the Ironhack spaceship tries to shoot and destroy t
 - If the Ironship don´t shoot the obstacle and the obstacle reaches the goal, lose 10 points.
 - If the score is less than 0 points, the game ends.
 - If the obstacle collides with the Ironship, no points are deducted, but the game ends.
-- Every 20 points scored, the speed of obstacle increases.
+- Every x points scored, the speed of obstacle increases.
 - The left and right keys are used to move the Ironship, and the space bar is used to shoot.
 
 
@@ -30,7 +30,7 @@ IronSpace is a game in which the Ironhack spaceship tries to shoot and destroy t
 ## game.js
 
 - Game () {
-    this.player;
+    this.irSpace;
     this.obstacles = [];
 }
 - gameLoop () {}

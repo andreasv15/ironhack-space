@@ -2,24 +2,19 @@ class Game {
 
     constructor() {
         this.irSpace = new Ironship();
-        //this.irShoot;
 
         this.obsCSS = new obstacleCSS();
         this.obsHTML = new obstacleHTML();
         this.obsJS = new obstacleJS();
         this.obsMDB = new obstacleMDB();
-        //this.obsNODE = new obstacleNODE();
         this.obsREACT = new obstacleREACT();
         this.obsVUE = new obstacleVUE();
         
 
-        //let randomY = Math.floor(Math.random() * canvas.height);
-        //console.log(randomX);
         this.obstacleArrCSS = [ ];
         this.obstacleArrHTML = [ ];
         this.obstacleArrJS = [ ];
         this.obstacleArrMDB = [ ];
-        //this.obstacleArrNODE = [ ];
         this.obstacleArrREACT = [ ];
         this.obstacleArrVUE = [ ];
         this.shootsArr = [ ];
@@ -41,19 +36,20 @@ class Game {
 
     addNewObstacleShoot = () => {
         let newObsShoot = new Shoot();
+        newObsShoot.playAudio();
         this.shootsArr.push(newObsShoot);            
     }
 
     addNewObstacleCSS = () => {
         if ( this.obstacleArrCSS.length === 0 || this.obstacleArrCSS[this.obstacleArrCSS.length -1].y > 200) {
             randomX = Math.random() * (canvas.width - this.obsCSS.w);
-            if (score > 30) {
-                this.speed += 0.1;
-            } else if  (score > 70) {
+            if (score > 190) {
                 this.speed += 0.1;
             } else if  (score > 140) {
                 this.speed += 0.1;
-            } else if (score > 190) {
+            } else if  (score > 70) {
+                this.speed += 0.1;
+            } else if (score > 30) {
                 this.speed += 0.1;
             }
             let newObsCSS = new obstacleCSS(randomX, -200, this.speed);
@@ -64,13 +60,13 @@ class Game {
     addNewObstacleHTML = () => {
         if ( this.obstacleArrHTML.length === 0 || this.obstacleArrHTML[this.obstacleArrHTML.length -1].y > 150) {
             randomX = Math.random() * (canvas.width - this.obsHTML.w);
-            if (score > 30) {
-                this.speed += 0.1;
-            } else if  (score > 70) {
+            if (score > 190) {
                 this.speed += 0.1;
             } else if  (score > 140) {
                 this.speed += 0.1;
-            } else if (score > 190) {
+            } else if  (score > 70) {
+                this.speed += 0.1;
+            } else if (score > 30) {
                 this.speed += 0.1;
             }
             let newObsHTML = new obstacleHTML(randomX, -50, this.speed);
@@ -81,13 +77,13 @@ class Game {
     addNewObstacleJS = () => {
         if ( this.obstacleArrJS.length === 0 || this.obstacleArrJS[this.obstacleArrJS.length -1].y > 100) {
             randomX = Math.random() * (canvas.width - this.obsJS.w);
-            if (score > 30) {
-                this.speed += 0.1;
-            } else if  (score > 70) {
+            if (score > 190) {
                 this.speed += 0.1;
             } else if  (score > 140) {
                 this.speed += 0.1;
-            } else if (score > 190) {
+            } else if  (score > 70) {
+                this.speed += 0.1;
+            } else if (score > 30) {
                 this.speed += 0.1;
             }
             let newObsJS = new obstacleJS(randomX, -100, this.speed);
@@ -98,13 +94,13 @@ class Game {
     addNewObstacleMDB = () => {
         if ( this.obstacleArrMDB.length === 0 || this.obstacleArrMDB[this.obstacleArrMDB.length -1].y > 80) {
             randomX = Math.random() * (canvas.width - this.obsMDB.w);
-            if (score > 30) {
-                this.speed += 0.1;
-            } else if  (score > 70) {
+            if (score > 190) {
                 this.speed += 0.1;
             } else if  (score > 140) {
                 this.speed += 0.1;
-            } else if (score > 190) {
+            } else if  (score > 70) {
+                this.speed += 0.1;
+            } else if (score > 30) {
                 this.speed += 0.1;
             }
             let newObsMDB = new obstacleMDB(randomX, -20, this.speed);
@@ -116,13 +112,13 @@ class Game {
     addNewObstacleREACT = () => {
         if ( this.obstacleArrREACT.length === 0 || this.obstacleArrREACT[this.obstacleArrREACT.length -1].y > 210) {
             randomX = Math.random() * (canvas.width - this.obsREACT.w);
-            if (score > 30) {
-                this.speed += 0.1;
-            } else if  (score > 70) {
+            if (score > 190) {
                 this.speed += 0.1;
             } else if  (score > 140) {
                 this.speed += 0.1;
-            } else if (score > 190) {
+            } else if  (score > 70) {
+                this.speed += 0.1;
+            } else if (score > 30) {
                 this.speed += 0.1;
             }
             let newObsREACT = new obstacleREACT(randomX, -80, this.speed);
@@ -133,13 +129,13 @@ class Game {
     addNewObstacleVUE = () => {
         if ( this.obstacleArrVUE.length === 0 || this.obstacleArrVUE[this.obstacleArrVUE.length -1].y > 200) {
             randomX = Math.random() * (canvas.width - this.obsVUE.w);
-            if (score > 30) {
-                this.speed += 0.1;
-            } else if  (score > 70) {
+            if (score > 190) {
                 this.speed += 0.1;
             } else if  (score > 140) {
                 this.speed += 0.1;
-            } else if (score > 190) {
+            } else if  (score > 70) {
+                this.speed += 0.1;
+            } else if (score > 30) {
                 this.speed += 0.1;
             }
             let newObsVUE = new obstacleVUE(randomX, -100, this.speed);
@@ -468,6 +464,7 @@ class Game {
         } else {
             this.stopSeconds();
             pointsSpanGO.innerText = parseInt(score); 
+            window.removeEventListener("keydown", keyPress);
             // 2. el canvas desaparece
             canvas.style.display = "none";
             timePoints.style.display = "none";
