@@ -6,7 +6,7 @@ class Shoot {
         this.h = 55;
         this.speed = 3;
         this.img = new Image();
-        this.img.src = "../images/shoot-individual.png";
+        this.img.src = "./images/shoot-individual.png";
     }
 
     drawShoot() {
