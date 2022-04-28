@@ -13,14 +13,39 @@
   <div class="container">
     <div id="time-points">
       <p>Score: <span id="scoreSpan"> 0 </span></p>
-      <p>Tiempo: <span id="timeSpan"> 0 </span></p>
+      <p>Time: <span id="timeSpan"> 0 </span></p>
     </div>
 
         <!-- START SCREEN -->
         <div id="splash-screen" class="container">
-          <img src="./images/IRONSPACE-GAME-removebg.png" width="500" alt="logo">
+          <img src="./images/IRONSPACE-GAME-removebg.png" width="500" alt="logo" />
 
+          <div id="instructions">
+            <h1> Instructions </h1>
+            <p>
+              Your goal is to shoot as many obstacles as possible, but don't let them reach the end because you lose points!
+            </p>
 
+            <ul>
+              <li>If the Ironship shoot the obstacle, you get 5 points.</li>
+              <li>If the Ironship don't shoot the obstacle and the obstacle reaches the goal, you lose 10 points.</li>
+              <li>If the score is less than 0 points, the game ends.</li>
+              <li>If the obstacle collides with the Ironship, you don't lose points, but the game ends.</li>  
+            </ul>
+            <hr />
+  
+            <p class="moveAndShootIronship">
+              <img src="./images/keyboard-left.png" width="40" /> 
+              <img src="./images/keyboard-right.png" width="40" /> 
+              Move Ironship 
+            </p>
+  
+            <p class="moveAndShootIronship">
+              <img src="./images/keyboard-space.png" width="95" /> Shoot <img src="./images/explosion-2.png" alt="explosion" width="25px" /> <img src="./images/explosion-2.png" alt="explosion" width="25px" />
+            </p>
+          </div>
+
+          <p id="ready"> Are you ready? 🤩🤩 </p>
           <button id="start-btn">START!</button>
         </div>
         
@@ -35,7 +60,7 @@
 
           <div id="timePointsGameOver">
             <p>Your score: <span id="scoreSpanGO"> 0 </span></p>
-            <p>Tiempo: <span id="timeSpanGO"> 0 </span></p>
+            <p>Time: <span id="timeSpanGO"> 0 </span></p>
             
           </div>
       
