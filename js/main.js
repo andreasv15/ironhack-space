@@ -26,6 +26,8 @@ let score = 0;
 
 
 const startGame = () => {
+    window.addEventListener("keydown", keyPress);
+
     score = 0;
     startScreen.style.display = "none";
     gameOverScreen.style.display = "none";
@@ -62,4 +64,3 @@ const keyPress = (event) => {
 
 startBtnDOM.addEventListener("click", startGame);
 restartBtnDOM.addEventListener("click", startGame);
-window.addEventListener("keydown", keyPress);
