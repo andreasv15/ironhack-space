@@ -18,7 +18,6 @@ class Ironship {
         this.x = this.x - 10;
     }
 
-
     moveRightIronship() {
         this.x = this.x + 10;
     }

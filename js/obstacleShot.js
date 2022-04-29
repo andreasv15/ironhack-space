@@ -1,4 +1,4 @@
-class Shoot {
+class Shot {
     constructor() {
         this.x = game.irSpace.x;
         this.y = 480;
@@ -6,17 +6,17 @@ class Shoot {
         this.h = 55;
         this.speed = 3;
         this.img = new Image();
-        this.img.src = "./images/shoot-individual.png";
+        this.img.src = "./images/shot-individual.png";
         this.audio = new Audio();
-        this.audio.src = "./audio/audioShootCortado.mp3";
+        this.audio.src = "./audio/audioShotCortado.mp3";
     }
 
-    drawShoot() {
+    drawShot() {
         ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
     }
 
     
-    moveObstacleShoot() {
+    moveObstacleShot() {
             this.y = this.y - this.speed;
     }
 

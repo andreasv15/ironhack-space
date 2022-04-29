@@ -6,18 +6,14 @@ class Game {
         this.obsCSS = new obstacleCSS();
         this.obsHTML = new obstacleHTML();
         this.obsJS = new obstacleJS();
-        this.obsMDB = new obstacleMDB();
         this.obsREACT = new obstacleREACT();
-        this.obsVUE = new obstacleVUE();
         
 
         this.obstacleArrCSS = [ ];
         this.obstacleArrHTML = [ ];
         this.obstacleArrJS = [ ];
-      //  this.obstacleArrMDB = [ ];
         this.obstacleArrREACT = [ ];
-        //this.obstacleArrVUE = [ ];
-        this.shootsArr = [ ];
+        this.shotsArr = [ ];
         this.speed = 1;
         this.isGameOn = true;
         this.seconds = 0;
@@ -36,10 +32,10 @@ class Game {
 
     // AÑADIENDO OBSTACULOS
 
-    addNewObstacleShoot = () => {
-        let newObsShoot = new Shoot();
-        newObsShoot.playAudio();
-        this.shootsArr.push(newObsShoot);            
+    addNewObstacleShot = () => {
+        let newObsShot = new Shot();
+        newObsShot.playAudio();
+        this.shotsArr.push(newObsShot);            
     }
 
     addNewObstacleCSS = () => {
@@ -134,16 +130,16 @@ class Game {
                     pointsSpanGO.style.color = "red";
                 }
             }
-            this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
-                if (eachObsShoot.x < eachObsCSS.x + eachObsCSS.w &&
-                    eachObsShoot.x + eachObsShoot.w > eachObsCSS.x &&
-                    eachObsShoot.y < eachObsCSS.y + eachObsCSS.h &&
-                    eachObsShoot.h + eachObsShoot.y > eachObsCSS.y) {
+            this.shotsArr.forEach( (eachObsShot, indexShot) => {
+                if (eachObsShot.x < eachObsCSS.x + eachObsCSS.w &&
+                    eachObsShot.x + eachObsShot.w > eachObsCSS.x &&
+                    eachObsShot.y < eachObsCSS.y + eachObsCSS.h &&
+                    eachObsShot.h + eachObsShot.y > eachObsCSS.y) {
                         // 1. va sumando puntos al score y borrando los elementos colisionados
                         score += 5;
                         
                         this.obstacleArrCSS.splice(indexCSS, 1);
-                        this.shootsArr.splice(indexShoot, 1);
+                        this.shotsArr.splice(indexShot, 1);
                         pointsSpan.innerText = parseInt(score); 
                 }
             })
@@ -170,15 +166,15 @@ class Game {
                 }
 
             }
-            this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
-                if (eachObsShoot.x < eachObsHTML.x + eachObsHTML.w &&
-                    eachObsShoot.x + eachObsShoot.w > eachObsHTML.x &&
-                    eachObsShoot.y < eachObsHTML.y + eachObsHTML.h &&
-                    eachObsShoot.h + eachObsShoot.y > eachObsHTML.y) {
+            this.shotsArr.forEach( (eachObsShot, indexShot) => {
+                if (eachObsShot.x < eachObsHTML.x + eachObsHTML.w &&
+                    eachObsShot.x + eachObsShot.w > eachObsHTML.x &&
+                    eachObsShot.y < eachObsHTML.y + eachObsHTML.h &&
+                    eachObsShot.h + eachObsShot.y > eachObsHTML.y) {
                         // 1. va sumando puntos al score
                         score += 5;
                         this.obstacleArrHTML.splice(indexHTML, 1);
-                        this.shootsArr.splice(indexShoot, 1);
+                        this.shotsArr.splice(indexShot, 1);
                         pointsSpan.innerText = parseInt(score); 
                 }
             })
@@ -203,15 +199,15 @@ class Game {
                     pointsSpanGO.style.color = "red";
                 }
             }
-            this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
-                if (eachObsShoot.x < eachObsJS.x + eachObsJS.w &&
-                    eachObsShoot.x + eachObsShoot.w > eachObsJS.x &&
-                    eachObsShoot.y < eachObsJS.y + eachObsJS.h &&
-                    eachObsShoot.h + eachObsShoot.y > eachObsJS.y) {
+            this.shotsArr.forEach( (eachObsShot, indexShot) => {
+                if (eachObsShot.x < eachObsJS.x + eachObsJS.w &&
+                    eachObsShot.x + eachObsShot.w > eachObsJS.x &&
+                    eachObsShot.y < eachObsJS.y + eachObsJS.h &&
+                    eachObsShot.h + eachObsShot.y > eachObsJS.y) {
                         // 1. va sumando puntos al score
                         score += 5;
                         this.obstacleArrJS.splice(indexJS, 1);
-                        this.shootsArr.splice(indexShoot, 1);
+                        this.shotsArr.splice(indexShot, 1);
                         pointsSpan.innerText = parseInt(score);
                 }
             })
@@ -238,15 +234,15 @@ class Game {
                     pointsSpanGO.style.color = "red";
                 }
             }
-            this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
-                if (eachObsShoot.x < eachObsREACT.x + eachObsREACT.w &&
-                    eachObsShoot.x + eachObsShoot.w > eachObsREACT.x &&
-                    eachObsShoot.y < eachObsREACT.y + eachObsREACT.h &&
-                    eachObsShoot.h + eachObsShoot.y > eachObsREACT.y) {
+            this.shotsArr.forEach( (eachObsShot, indexShot) => {
+                if (eachObsShot.x < eachObsREACT.x + eachObsREACT.w &&
+                    eachObsShot.x + eachObsShot.w > eachObsREACT.x &&
+                    eachObsShot.y < eachObsREACT.y + eachObsREACT.h &&
+                    eachObsShot.h + eachObsShot.y > eachObsREACT.y) {
                         // 1. va sumando puntos al score
                         score += 5;
                         this.obstacleArrREACT.splice(indexREACT, 1);
-                        this.shootsArr.splice(indexShoot, 1);
+                        this.shotsArr.splice(indexShot, 1);
                         pointsSpan.innerText = parseInt(score); 
                 }
             })
@@ -277,8 +273,8 @@ class Game {
             eachObsREACT.moveObstacleREACT();
         });
         
-        this.shootsArr.forEach((eachObsShoot) => {
-            eachObsShoot.moveObstacleShoot();
+        this.shotsArr.forEach((eachObsShot) => {
+            eachObsShot.moveObstacleShot();
         });
 
 
@@ -312,9 +308,9 @@ class Game {
             eachObsREACT.drawObstacleREACT();
         });
         
-        this.shootsArr.forEach((eachObsShoot) => {
+        this.shotsArr.forEach((eachObsShot) => {
             //console.log("¨dibujando")
-            eachObsShoot.drawShoot();
+            eachObsShot.drawShot();
         });
 
 
@@ -332,8 +328,6 @@ class Game {
             gameOverScreen.style.display = "flex";
             
         }
-
-
     }
 }
 

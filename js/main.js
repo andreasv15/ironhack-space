@@ -49,14 +49,11 @@ const keyPress = (event) => {
     if (event.code === "ArrowLeft" && game.irSpace.x > 0) {
         // mueve izquierda
         game.irSpace.moveLeftIronship();
-        //console.log("izq")
     } else if (event.code === "ArrowRight" && game.irSpace.x < 400) {
         // mueve derecha
         game.irSpace.moveRightIronship();
-        //console.log("der")
     } else if (event.code === "Space") {
-        //game.irShoot = new Shoot();
-            game.addNewObstacleShoot();
+            game.addNewObstacleShot();
     }
 }
 
