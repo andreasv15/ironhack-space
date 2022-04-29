@@ -92,7 +92,7 @@ IronSpace is a game in which the Ironhack spaceship tries to shot and destroy th
 - Check mouse and keyboard events.
 
 
-# Extra Links (The links can be added later when available)
+# Extra Links
 
 
 ### Slides
