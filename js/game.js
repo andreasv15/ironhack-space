@@ -31,7 +31,6 @@ class Game {
     }
 
     // AÑADIENDO OBSTACULOS
-
     addNewObstacleShot = () => {
         let newObsShot = new Shot();
         newObsShot.playAudio();
