@@ -34,6 +34,8 @@ class Game {
         clearInterval(this.incSeconds);
     }
 
+    // AÑADIENDO OBSTACULOS
+
     addNewObstacleShoot = () => {
         let newObsShoot = new Shoot();
         newObsShoot.playAudio();
@@ -91,24 +93,6 @@ class Game {
         }
     }
     
-    /*
-    addNewObstacleMDB = () => {
-        if ( this.obstacleArrMDB.length === 0 || this.obstacleArrMDB[this.obstacleArrMDB.length -1].y > 80) {
-            randomX = Math.random() * (canvas.width - this.obsMDB.w);
-            if (score > 190) {
-                this.speed += 0.1;
-            } else if  (score > 140) {
-                this.speed += 0.1;
-            } else if  (score > 70) {
-                this.speed += 0.1;
-            } else if (score > 30) {
-                this.speed += 0.1;
-            }
-            let newObsMDB = new obstacleMDB(randomX, -20, this.speed);
-            this.obstacleArrMDB.push(newObsMDB);
-        }
-    }
-    */
 
     addNewObstacleREACT = () => {
         if ( this.obstacleArrREACT.length === 0 || this.obstacleArrREACT[this.obstacleArrREACT.length -1].y > 210) {
@@ -127,25 +111,7 @@ class Game {
         }
     }
 
-    /*
-    addNewObstacleVUE = () => {
-        if ( this.obstacleArrVUE.length === 0 || this.obstacleArrVUE[this.obstacleArrVUE.length -1].y > 200) {
-            randomX = Math.random() * (canvas.width - this.obsVUE.w);
-            if (score > 190) {
-                this.speed += 0.1;
-            } else if  (score > 140) {
-                this.speed += 0.1;
-            } else if  (score > 70) {
-                this.speed += 0.1;
-            } else if (score > 30) {
-                this.speed += 0.1;
-            }
-            let newObsVUE = new obstacleVUE(randomX, -100, this.speed);
-            this.obstacleArrVUE.push(newObsVUE);
-        }
-    }
-    */
-
+    // COLISION DE OBSTACULOS CON LA NAVE Y DISPARO
     Collision = () => {
 
         this.obstacleArrCSS.forEach( (eachObsCSS, indexCSS) => {
@@ -189,8 +155,6 @@ class Game {
                 this.irSpace.y < eachObsHTML.y + eachObsHTML.h &&
                 this.irSpace.h + this.irSpace.y > eachObsHTML.y) {
                 // collision detected!
-                //console.log("colisiona VUE con iron");
-                //finaliza el juego
 
                 // el juego se detiene
                 this.isGameOn = false;
@@ -198,7 +162,6 @@ class Game {
                 // colision obstacles con canvas height
                 // 1. va restando puntos al score y borrando los elementos colisionados
                 score -= 10;
-                //this.shootsArr.splice(indexShoot, 1);
                 this.obstacleArrHTML.splice(indexHTML, 1);
                 pointsSpan.innerText = parseInt(score);
                 if (score < 0) {
@@ -217,7 +180,6 @@ class Game {
                         this.obstacleArrHTML.splice(indexHTML, 1);
                         this.shootsArr.splice(indexShoot, 1);
                         pointsSpan.innerText = parseInt(score); 
-
                 }
             })
         })
@@ -228,16 +190,12 @@ class Game {
                 this.irSpace.y < eachObsJS.y + eachObsJS.h &&
                 this.irSpace.h + this.irSpace.y > eachObsJS.y) {
                 // collision detected!
-                //console.log("colisiona VUE con iron");
-                //finaliza el juego
-
                 // el juego se detiene
                 this.isGameOn = false;
             } else if (eachObsJS.y > canvas.height) {
                 // colision obstacles con canvas height
                 // 1. va restando puntos al score y borrando los elementos colisionados
                 score -= 10;
-                //this.shootsArr.splice(indexShoot, 1);
                 this.obstacleArrJS.splice(indexJS, 1);
                 pointsSpan.innerText = parseInt(score);
                 if (score < 0) {
@@ -259,53 +217,12 @@ class Game {
             })
         })
 
-        /*
-        this.obstacleArrMDB.forEach( (eachObsMDB, indexMDB) => {
-            if (this.irSpace.x < eachObsMDB.x + eachObsMDB.w &&
-                this.irSpace.x + this.irSpace.w > eachObsMDB.x &&
-                this.irSpace.y < eachObsMDB.y + eachObsMDB.h &&
-                this.irSpace.h + this.irSpace.y > eachObsMDB.y) {
-                // collision detected!
-                //console.log("colisiona VUE con iron");
-                //finaliza el juego
-
-                // el juego se detiene
-                this.isGameOn = false;
-            } else if (eachObsMDB.y > canvas.height) {
-                // colision obstacles con canvas height
-                // 1. va restando puntos al score y borrando los elementos colisionados
-                score -= 10;
-                //this.shootsArr.splice(indexShoot, 1);
-                this.obstacleArrMDB.splice(indexMDB, 1);
-                pointsSpan.innerText = parseInt(score);
-                if (score < 0) {
-                    this.isGameOn = false;
-                    pointsSpanGO.style.color = "red";
-                }
-            }
-            this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
-                if (eachObsShoot.x < eachObsMDB.x + eachObsMDB.w &&
-                    eachObsShoot.x + eachObsShoot.w > eachObsMDB.x &&
-                    eachObsShoot.y < eachObsMDB.y + eachObsMDB.h &&
-                    eachObsShoot.h + eachObsShoot.y > eachObsMDB.y) {
-                        // 1. va sumando puntos al score
-                        score += 5;
-                        this.obstacleArrMDB.splice(indexMDB, 1);
-                        this.shootsArr.splice(indexShoot, 1);
-                        pointsSpan.innerText = parseInt(score); 
-
-                    }
-            })
-        })
-        */
-
         this.obstacleArrREACT.forEach( (eachObsREACT, indexREACT) => {
             if (this.irSpace.x < eachObsREACT.x + eachObsREACT.w &&
                 this.irSpace.x + this.irSpace.w > eachObsREACT.x &&
                 this.irSpace.y < eachObsREACT.y + eachObsREACT.h &&
                 this.irSpace.h + this.irSpace.y > eachObsREACT.y) {
                 // collision detected!
-                //console.log("colisiona VUE con iron");
                 //finaliza el juego
 
                 // el juego se detiene
@@ -314,7 +231,6 @@ class Game {
                 // colision obstacles con canvas height
                 // 1. va restando puntos al score y borrando los elementos colisionados
                 score -= 10;
-                //this.shootsArr.splice(indexShoot, 1);
                 this.obstacleArrREACT.splice(indexREACT, 1);
                 pointsSpan.innerText = parseInt(score);
                 if (score < 0) {
@@ -331,51 +247,10 @@ class Game {
                         score += 5;
                         this.obstacleArrREACT.splice(indexREACT, 1);
                         this.shootsArr.splice(indexShoot, 1);
-                        //console.log(this.score);
                         pointsSpan.innerText = parseInt(score); 
                 }
             })
         })
-
-        /*
-        this.obstacleArrVUE.forEach( (eachObsVUE, indexVUE) => {
-            if (this.irSpace.x < eachObsVUE.x + eachObsVUE.w &&
-                this.irSpace.x + this.irSpace.w > eachObsVUE.x &&
-                this.irSpace.y < eachObsVUE.y + eachObsVUE.h &&
-                this.irSpace.h + this.irSpace.y > eachObsVUE.y) {
-                // collision detected!
-                //console.log("colisiona VUE con iron");
-                //finaliza el juego
-
-                // el juego se detiene
-                this.isGameOn = false;
-            } else if (eachObsVUE.y > canvas.height) {
-                // colision obstacles con canvas height
-                // 1. va restando puntos al score y borrando los elementos colisionados
-                score -= 10;
-                //this.shootsArr.splice(indexShoot, 1);
-                this.obstacleArrVUE.splice(indexVUE, 1);
-                pointsSpan.innerText = parseInt(score);
-                if (score < 0) {
-                    this.isGameOn = false;
-                    pointsSpanGO.style.color = "red";
-                }
-            }
-            this.shootsArr.forEach( (eachObsShoot, indexShoot) => {
-                if (eachObsShoot.x < eachObsVUE.x + eachObsVUE.w &&
-                    eachObsShoot.x + eachObsShoot.w > eachObsVUE.x &&
-                    eachObsShoot.y < eachObsVUE.y + eachObsVUE.h &&
-                    eachObsShoot.h + eachObsShoot.y > eachObsVUE.y) {
-                        //console.log("colision shoot con vue")
-                        // 1. va sumando puntos al score
-                        score += 5;
-                        this.obstacleArrVUE.splice(indexVUE, 1);
-                        this.shootsArr.splice(indexShoot, 1);
-                        pointsSpan.innerText = parseInt(score); 
-                }
-            })
-        })
-        */
     }
 
     // todos los metodos que regulan nuestro juego
@@ -398,33 +273,19 @@ class Game {
             eachObsJS.moveObstacleJS();
         });
 
-        /*
-        this.obstacleArrMDB.forEach((eachObsMDB) => {
-            eachObsMDB.moveObstacleMDB();
-        });
-        */
-
         this.obstacleArrREACT.forEach((eachObsREACT) => {
             eachObsREACT.moveObstacleREACT();
         });
         
-        /*
-        this.obstacleArrVUE.forEach((eachObsVUE) => {
-            eachObsVUE.moveObstacleVUE();
-        });
-        */
-
         this.shootsArr.forEach((eachObsShoot) => {
             eachObsShoot.moveObstacleShoot();
         });
 
 
         this.addNewObstacleJS();
-        //this.addNewObstacleMDB();
         this.addNewObstacleHTML();
         this.addNewObstacleCSS();
         this.addNewObstacleREACT();
-        //this.addNewObstacleVUE();
 
 
         // checkear si el lenguaje choca con el ironship
@@ -447,28 +308,14 @@ class Game {
             eachObsJS.drawObstacleJS();
         });
         
-        /*
-        this.obstacleArrMDB.forEach((eachObsMDB) => {
-            eachObsMDB.drawObstacleMDB();
-        });
-        */
-
         this.obstacleArrREACT.forEach((eachObsREACT) => {
             eachObsREACT.drawObstacleREACT();
         });
         
-        /*
-        this.obstacleArrVUE.forEach((eachObsVUE) => {
-            eachObsVUE.drawObstacleVUE();
-        });
-        */
-
         this.shootsArr.forEach((eachObsShoot) => {
             //console.log("¨dibujando")
             eachObsShoot.drawShoot();
         });
-
-        
 
 
         // 4. control y recursividad

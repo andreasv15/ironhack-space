@@ -6,6 +6,7 @@ const restartBtnDOM = document.querySelector("#restart-btn");
 const startScreen = document.querySelector("#splash-screen");
 const gameOverScreen = document.querySelector("#gameover-screen");
 
+/* CAPTURA DE ELEMENTOS */
 const canvas = document.querySelector("#my-canvas");
 
 const timePoints = document.querySelector("#time-points");
@@ -24,7 +25,7 @@ let game;
 let randomX = Math.floor(Math.random() * canvas.width);
 let score = 0;
 
-
+/* INICIACION DE JUEGO */
 const startGame = () => {
     window.addEventListener("keydown", keyPress);
 
@@ -55,12 +56,10 @@ const keyPress = (event) => {
         //console.log("der")
     } else if (event.code === "Space") {
         //game.irShoot = new Shoot();
-        if (startGame) {
             game.addNewObstacleShoot();
-        }
     }
 }
 
-
+/* ADDEVENTLISTENERS */
 startBtnDOM.addEventListener("click", startGame);
 restartBtnDOM.addEventListener("click", startGame);

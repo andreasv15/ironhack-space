@@ -13,8 +13,6 @@ class Shoot {
 
     drawShoot() {
         ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
-        //console.log(ctx);
-        //console.log("dibujando disparo");
     }
 
     
@@ -24,6 +22,6 @@ class Shoot {
 
     playAudio() {
         this.audio.play();
+        this.audio.volume = 0.1;
     }
-    
 }

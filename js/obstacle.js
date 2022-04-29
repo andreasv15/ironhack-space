@@ -121,7 +121,6 @@ class obstacleHTML {
     moveObstacleHTML() {
         this.y = this.y + this.speed;
     }
-
 }
 
 

@@ -14,7 +14,6 @@ class Ironship {
         ctx.drawImage(this.logo, this.x, this.y, this.w, this.h);
     }
 
-
     moveLeftIronship() {
         this.x = this.x - 10;
     }

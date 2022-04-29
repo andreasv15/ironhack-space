@@ -1,7 +1,7 @@
 # IRONSPACE
 
 
-## [See the Game]()
+## [Link Ironspace game](https://andreasv15.github.io/ironhack-space/)
 NOTE: above link will be added later
 
 # Description
